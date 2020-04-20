@@ -13,6 +13,7 @@ class AppListAdapter : RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() 
 
     var dataSource by Delegates.observable(listOf<AppItem>()) { _, _, _ -> notifyDataSetChanged() }
     private lateinit var onAppListener: (AppItem) -> Unit
+    private lateinit var onLongAppListener: (AppItem) -> Unit
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -36,10 +37,21 @@ class AppListAdapter : RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() 
                 onAppListener(dataSource[position])
             }
         }
+
+        holder.viewItem.setOnLongClickListener {
+            if (::onAppListener.isInitialized) {
+                onLongAppListener(dataSource[position])
+            }
+            true
+        }
     }
 
     fun setOnAppClickListener(block: (AppItem) -> Unit) {
         onAppListener = block
+    }
+
+    fun setOnLongAppClickListener(block: (AppItem) -> Unit) {
+        onLongAppListener = block
     }
 
     class AppListViewHolder(val viewItem: View) : ViewHolder(viewItem) {
