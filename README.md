@@ -1,0 +1,1 @@
+# NothingLauncher for Nothing lovers
