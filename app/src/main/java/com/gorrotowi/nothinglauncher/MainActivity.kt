@@ -2,10 +2,9 @@ package com.gorrotowi.nothinglauncher
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.gorrotowi.nothinglauncher.applist.AppListActivity
 import com.gorrotowi.nothinglauncher.databinding.ActivityMainBinding
+
 
 class MainActivity : NothingBaseActivity() {
 
@@ -15,8 +14,9 @@ class MainActivity : NothingBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
         setContentView(binding.root)
+        setNightMode()
+        overrideNotch()
         setUpListeners()
     }
 
