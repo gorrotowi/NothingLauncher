@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.gorrotowi.nothinglauncher.R
 import kotlinx.android.synthetic.main.itemapp.view.*
 import kotlin.properties.Delegates
+import com.gorrotowi.nothinglauncher.notifications.NotificationRepository
 
 class AppListAdapter : RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() {
 
@@ -57,6 +58,8 @@ class AppListAdapter : RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() 
     class AppListViewHolder(val viewItem: View) : ViewHolder(viewItem) {
         fun bindView(itemData: AppItem) {
             viewItem.txtAppItem?.text = itemData.name
+            val hasNotification = NotificationRepository.hasNotification(itemData.packageName)
+            viewItem.notificationDot?.visibility = if (hasNotification) View.VISIBLE else View.GONE
         }
     }
 

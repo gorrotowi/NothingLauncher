@@ -5,13 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <View
+        android:id="@+id/notificationDot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/notification_dot"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/txtAppItem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtAppItem"
+        tools:visibility="visible" />
+
     <TextView
         android:id="@+id/txtAppItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/questrial"
         android:gravity="start"
-        android:padding="16dp"
+        android:paddingStart="28dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -5,8 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import com.gorrotowi.nothinglauncher.NothingBaseActivity
 import com.gorrotowi.nothinglauncher.databinding.ActivityAppListBinding
+import com.gorrotowi.nothinglauncher.notifications.NotificationRepository
 import kotlinx.android.synthetic.main.activity_app_list.*
 
 class AppListActivity : NothingBaseActivity() {
@@ -27,6 +29,13 @@ class AppListActivity : NothingBaseActivity() {
 
         setUpViews()
         setUpListeners()
+        observeNotifications()
+    }
+
+    private fun observeNotifications() {
+        NotificationRepository.notificationCountsLiveData.observe(this, Observer {
+            adapter.notifyDataSetChanged()
+        })
     }
 
     private fun setUpListeners() {
