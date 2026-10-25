@@ -172,16 +172,32 @@ Current permissions in `AndroidManifest.xml`:
 3. **Limited Tests:** Only example test files exist, no real test coverage
 4. **ProGuard Disabled:** Release builds have `minifyEnabled=false`
 
-## Git Workflow
+## Git Workflow (GitFlow)
+
+The repo follows **GitFlow**. Branch model:
+
+| Branch | Purpose |
+|--------|---------|
+| `main` | Latest stable release. **Protected**: only `release/*` PRs can merge. |
+| `develop` | Integration branch; all features/fixes land here. |
+| `feature/*`, `fix/*`, `chore/*`, `claude/*` | Short-lived work branches, branched from `develop`. |
+| `release/x.y.z` | Release cut, branched from `develop`. Only these merge into `main`. |
+
+### Rules
+- Never commit directly to `main` or `develop`.
+- `main` only ever contains the latest stable code.
+- Only `release/x.y.z` branches may be merged into `main` (enforced by branch protection + CI in `.github/workflows/gitflow.yml`).
+- Features/fixes/chores target `develop` via PR.
+- After a release is merged into `main`, merge `main` back into `develop`.
 
 Each feature/fix/chore is developed in its **own git worktree** (a sibling
-directory with its own branch), keeping `master` clean and letting multiple
+directory with its own branch), keeping `develop` clean and letting multiple
 features be built in parallel without stashing or switching branches.
 
-### Start a feature (from the main checkout, on `master`)
+### Start a feature (from the main checkout, on `develop`)
 
 ```bash
-git worktree add ../NothingLauncher-<feature-slug> -b <type>/<name>
+git worktree add ../NothingLauncher-<feature-slug> -b <type>/<name> develop
 cd ../NothingLauncher-<feature-slug>
 # local.properties is gitignored; create it if the SDK isn't found:
 #   echo 'sdk.dir='$ANDROID_HOME > local.properties
@@ -197,23 +213,40 @@ cd ../NothingLauncher-<feature-slug>
 # make changes, then:
 git add <files> && git commit -m "..."
 git push -u origin <type>/<name>
-gh pr create --base master --head <type>/<name> --title "..." --body "..."
+gh pr create --base develop --head <type>/<name> --title "..." --body "..."
 ```
 
-### After the PR is merged
+### After the PR is merged (back in the main checkout)
 
 ```bash
-# back in the main checkout
 cd ~/Nothing/NothingLauncher
 git fetch --prune origin
-git checkout master && git merge --ff-only origin/master
+git checkout develop && git merge --ff-only origin/develop
 git branch -d <type>/<name>                 # local branch
 # remove the worktree once you no longer need it:
 git worktree remove ../NothingLauncher-<feature-slug>
 ```
 
+### Cutting a release
+
+```bash
+# from an up-to-date develop
+git checkout develop && git pull --ff-only
+git checkout -b release/x.y.z
+# bump version, apply final fixes, then:
+git push -u origin release/x.y.z
+gh pr create --base main --head release/x.y.z --title "Release x.y.z" --body "..."
+```
+
+After the release PR is merged into `main`:
+
+```bash
+git checkout develop && git merge main      # back-merge the release into develop
+git push origin develop
+```
+
 - Keep commits focused and descriptive
-- The main branch should remain stable
+- `main` must remain stable and only move forward via `release/*` merges
 
 ## Resources
 
