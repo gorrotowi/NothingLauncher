@@ -55,12 +55,14 @@ class AppListActivity : NothingBaseActivity() {
         val intent = Intent(Intent.ACTION_MAIN, null)
         intent.addCategory(Intent.CATEGORY_LAUNCHER)
         val installedApps = applicationContext.packageManager.queryIntentActivities(intent, 0)
+        val selfPackage = packageName
         return installedApps.map { resolveInfo ->
             val appName = resolveInfo.activityInfo.loadLabel(packageManager).toString()
                 .replaceFirstChar { it.uppercaseChar() }
             val packageName = resolveInfo.activityInfo.packageName
             AppItem(appName, packageName)
         }
+            .filter { it.packageName != selfPackage }
             .sortedBy { it.name }
     }
 }
