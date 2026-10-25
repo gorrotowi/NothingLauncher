@@ -1,12 +1,10 @@
 package com.gorrotowi.nothinglauncher.applist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.gorrotowi.nothinglauncher.R
-import kotlinx.android.synthetic.main.itemapp.view.*
+import com.gorrotowi.nothinglauncher.databinding.ItemappBinding
 import kotlin.properties.Delegates
 
 class AppListAdapter : RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() {
@@ -15,31 +13,28 @@ class AppListAdapter : RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() 
     private lateinit var onAppListener: (AppItem) -> Unit
     private lateinit var onLongAppListener: (AppItem) -> Unit
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): AppListViewHolder = AppListViewHolder(
-        LayoutInflater
-            .from(parent.context)
-            .inflate(
-                R.layout.itemapp,
-                parent,
-                false
-            )
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppListViewHolder {
+        val binding = ItemappBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return AppListViewHolder(binding)
+    }
 
     override fun getItemCount(): Int = dataSource.size
 
     override fun onBindViewHolder(holder: AppListViewHolder, position: Int) {
         holder.bindView(dataSource[position])
-        holder.viewItem.setOnClickListener {
+
+        holder.binding.root.setOnClickListener {
             if (::onAppListener.isInitialized) {
                 onAppListener(dataSource[position])
             }
         }
 
-        holder.viewItem.setOnLongClickListener {
-            if (::onAppListener.isInitialized) {
+        holder.binding.root.setOnLongClickListener {
+            if (::onLongAppListener.isInitialized) {
                 onLongAppListener(dataSource[position])
             }
             true
@@ -54,10 +49,9 @@ class AppListAdapter : RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() 
         onLongAppListener = block
     }
 
-    class AppListViewHolder(val viewItem: View) : ViewHolder(viewItem) {
+    class AppListViewHolder(val binding: ItemappBinding) : ViewHolder(binding.root) {
         fun bindView(itemData: AppItem) {
-            viewItem.txtAppItem?.text = itemData.name
+            binding.txtAppItem.text = itemData.name
         }
     }
-
 }
