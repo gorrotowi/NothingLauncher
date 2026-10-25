@@ -178,7 +178,7 @@ The repo follows **GitFlow**. Branch model:
 
 | Branch | Purpose |
 |--------|---------|
-| `main` | Latest stable release. **Protected**: only `release/*` PRs can merge. |
+| `main` | Latest stable release. Only `release/*` PRs should merge. |
 | `develop` | Integration branch; all features/fixes land here. |
 | `feature/*`, `fix/*`, `chore/*`, `claude/*` | Short-lived work branches, branched from `develop`. |
 | `release/x.y.z` | Release cut, branched from `develop`. Only these merge into `main`. |
@@ -186,7 +186,7 @@ The repo follows **GitFlow**. Branch model:
 ### Rules
 - Never commit directly to `main` or `develop`.
 - `main` only ever contains the latest stable code.
-- Only `release/x.y.z` branches may be merged into `main` (enforced by branch protection + CI in `.github/workflows/gitflow.yml`).
+- Only `release/x.y.z` branches may be merged into `main`. Optional CI enforcement is available in `.github/workflows/gitflow.yml` (enable branch protection on `main` when you want to require it).
 - Features/fixes/chores target `develop` via PR.
 - After a release is merged into `main`, merge `main` back into `develop`.
 
