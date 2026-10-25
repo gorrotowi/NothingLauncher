@@ -1,13 +1,11 @@
 package com.gorrotowi.nothinglauncher.applist
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import com.gorrotowi.nothinglauncher.NothingBaseActivity
 import com.gorrotowi.nothinglauncher.databinding.ActivityAppListBinding
-import kotlinx.android.synthetic.main.activity_app_list.*
 
 class AppListActivity : NothingBaseActivity() {
 
@@ -32,9 +30,11 @@ class AppListActivity : NothingBaseActivity() {
     private fun setUpListeners() {
         adapter.setOnAppClickListener { appItem ->
             val packageName = appItem.packageName
-            val launchAppIntent = packageManager?.getLaunchIntentForPackage(packageName)
-            startActivity(launchAppIntent)
-            finish()
+            val launchAppIntent = packageManager.getLaunchIntentForPackage(packageName)
+            if (launchAppIntent != null) {
+                startActivity(launchAppIntent)
+                finish()
+            }
         }
 
         adapter.setOnLongAppClickListener { appItem ->
@@ -47,17 +47,17 @@ class AppListActivity : NothingBaseActivity() {
 
     private fun setUpViews() {
         val appList = getInstalledApps()
-        rcAppList.adapter = adapter
+        binding.rcAppList.adapter = adapter
         adapter.dataSource = appList
     }
 
-    @SuppressLint("DefaultLocale")
     private fun getInstalledApps(): List<AppItem> {
         val intent = Intent(Intent.ACTION_MAIN, null)
         intent.addCategory(Intent.CATEGORY_LAUNCHER)
         val installedApps = applicationContext.packageManager.queryIntentActivities(intent, 0)
         return installedApps.map { resolveInfo ->
-            val appName = resolveInfo.activityInfo.loadLabel(packageManager).toString().capitalize()
+            val appName = resolveInfo.activityInfo.loadLabel(packageManager).toString()
+                .replaceFirstChar { it.uppercaseChar() }
             val packageName = resolveInfo.activityInfo.packageName
             AppItem(appName, packageName)
         }
