@@ -174,7 +174,44 @@ Current permissions in `AndroidManifest.xml`:
 
 ## Git Workflow
 
-- Feature branches should be prefixed appropriately (e.g., `feature/`, `fix/`, `claude/`)
+Each feature/fix/chore is developed in its **own git worktree** (a sibling
+directory with its own branch), keeping `master` clean and letting multiple
+features be built in parallel without stashing or switching branches.
+
+### Start a feature (from the main checkout, on `master`)
+
+```bash
+git worktree add ../NothingLauncher-<feature-slug> -b <type>/<name>
+cd ../NothingLauncher-<feature-slug>
+# local.properties is gitignored; create it if the SDK isn't found:
+#   echo 'sdk.dir='$ANDROID_HOME > local.properties
+```
+
+- Branch prefixes: `feature/`, `fix/`, `chore/`, `claude/`
+- Worktree path: sibling `../NothingLauncher-<feature-slug>`
+
+### Work & ship (inside the worktree)
+
+```bash
+./gradlew assembleDebug     # or ./gradlew test
+# make changes, then:
+git add <files> && git commit -m "..."
+git push -u origin <type>/<name>
+gh pr create --base master --head <type>/<name> --title "..." --body "..."
+```
+
+### After the PR is merged
+
+```bash
+# back in the main checkout
+cd ~/Nothing/NothingLauncher
+git fetch --prune origin
+git checkout master && git merge --ff-only origin/master
+git branch -d <type>/<name>                 # local branch
+# remove the worktree once you no longer need it:
+git worktree remove ../NothingLauncher-<feature-slug>
+```
+
 - Keep commits focused and descriptive
 - The main branch should remain stable
 
