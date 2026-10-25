@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TV Debloated Store — 03 · Distribución y monetización</title>
+<style>
+:root{--bg:#0e1116;--panel:#171b22;--panel2:#1e242e;--fg:#e6e9ef;--muted:#98a0ad;--accent:#3ddc84;--accent2:#6ee7b0;--line:#2a303c;--warn:#ffb454;--bad:#ff7b72;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+header{position:sticky;top:0;background:rgba(14,17,22,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+header a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem}
+header a:hover{color:var(--accent)}
+header .brand{color:var(--fg);font-weight:800;margin-right:auto}
+main{max-width:960px;margin:0 auto;padding:32px 24px 96px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:2rem;margin:.2em 0}
+h2{font-size:1.4rem;margin-top:2em;padding-bottom:.3em;border-bottom:1px solid var(--line)}
+h3{font-size:1.1rem;margin-top:1.6em}
+a{color:var(--accent)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:16px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:700}
+.badge.g{background:rgba(61,220,132,.15);color:var(--accent)}
+.badge.y{background:rgba(255,180,84,.15);color:var(--warn)}
+.badge.r{background:rgba(255,123,114,.15);color:var(--bad)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+.callout{border-left:3px solid var(--accent);background:var(--panel2);padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0}
+.warn{border-left-color:var(--warn)}
+code{background:var(--panel2);padding:2px 6px;border-radius:6px;font-size:.9em}
+ul,ol{padding-left:1.4em}
+li{margin:.35em 0}
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">TV Debloated Store</span>
+  <a href="index.html">Inicio</a>
+  <a href="01-market-and-trend.html">Mercado</a>
+  <a href="02-implementation.html">Implementación</a>
+  <a href="03-distribution-and-monetization.html">Distribución & Monetización</a>
+  <a href="04-roadmap.html">Roadmap</a>
+</header>
+<main>
+  <h1>03 · Distribución y monetización</h1>
+
+  <h2>Canales de distribución</h2>
+  <p>El público objetivo <em>ya</em> está acostumbrado al sideload. Hay que ir donde están, en orden de prioridad:</p>
+  <table>
+    <tr><th>Canal</th><th>Prioridad</th><th>Por qué</th><th>Notas</th></tr>
+    <tr><td>Códigos de Downloader (app)</td><td><span class="badge g">1</span></td><td>Así instala apps el público de Fire TV/Android TV</td><td>Código corto → URL del APK</td></tr>
+    <tr><td>GitHub Releases</td><td><span class="badge g">1</span></td><td>APK directo + confianza + issue tracker</td><td>Firma reproducible</td></tr>
+    <tr><td>OTA propia en la app</td><td><span class="badge g">2</span></td><td>Los sideloaders no reciben updates automáticos</td><td>Checker al arrancar</td></tr>
+    <tr><td>F-Droid</td><td><span class="badge y">2</span></td><td>Público FOSS, si la app es 100% libre</td><td>Sin módulo de pago dentro</td></tr>
+    <tr><td>Itch.io / Gumroad</td><td><span class="badge y">3</span></td><td>Early access de pago y comunidad</td><td>Ingresos tempranos</td></tr>
+    <tr><td>Google Play (TV)</td><td><span class="badge y">3</span></td><td>Alcance masivo, pero categoría TV es limitada</td><td>Solo la app "tienda", sin debloat agresivo</td></tr>
+  </table>
+  <div class="callout warn"><strong>Política:</strong> Google Play restringe apps que gestionan dispositivos o fuerzan launchers. El módulo de debloat debe quedar <strong>fuera de la versión de Play</strong> (sideload-only).</div>
+
+  <h2>Monetización ética (principios)</h2>
+  <p>Regla de oro: <strong>el usuario siempre se beneficia y siempre conserva el control</strong>. Nada de anuncios, nada de vender datos, nada de suscripciones depredadoras, nada de lock-in.</p>
+  <ul>
+    <li><strong>Núcleo gratis para siempre:</strong> launcher + temas gratuitos + debloat básico.</li>
+    <li><strong>Formatos abiertos:</strong> exportar/importar <code>.tvtheme</code> libremente. Nadie queda atrapado.</li>
+    <li><strong>Los creadores cobran:</strong> revenue share justo (70% creador / 30% plataforma).</li>
+  </ul>
+
+  <h2>Modelo recomendado</h2>
+  <table>
+    <tr><th>Fuente</th><th>Qué es</th><th>Es ético?</th></tr>
+    <tr><td>Temas de pago</td><td>Compra única por tema, "paga lo que quieras" (mín. $1)</td><td><span class="badge g">Sí</span> — el creador y el usuario ganan</td></tr>
+    <tr><td>Pro de una sola vez</td><td>Desbloquea funciones avanzadas (backup en nube, sincronización, más filas)</td><td><span class="badge g">Sí</span> — sin suscripción</td></tr>
+    <tr><td>Tips a creadores</td><td>Botón de propina (Ko-fi/GitHub Sponsors)</td><td><span class="badge g">Sí</span></td></tr>
+    <tr><td>Suscripción opcional barata</td><td>~$1–2/mes SOLO si el usuario quiere sync/hosting en nube</td><td><span class="badge y">Aceptable</span> — con modo local gratuito</td></tr>
+  </table>
+
+  <h2>Lo que se evita (deliberadamente)</h2>
+  <ul>
+    <li>Anuncios en el launcher o en la tienda.</li>
+    <li>Venta de datos o analytics invasivos.</li>
+    <li>Suscripción obligatoria para funciones básicas.</li>
+    <li>Cerrar el formato para impedir migrar.</li>
+  </ul>
+
+  <h2>Verificación recomendada</h2>
+  <ul class="small">
+    <li>Encuestar a creadores: ¿prefieren "paga lo que quieras" o precio fijo?</li>
+    <li>Revisar la política vigente de Google Play sobre launchers y device management.</li>
+    <li>Probar el funnel de Downloader-code con un APK firmado.</li>
+  </ul>
+</main>
+</body>
+</html>

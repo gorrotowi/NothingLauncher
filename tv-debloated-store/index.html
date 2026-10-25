@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TV Debloated Store — Reporte & Plan</title>
+<style>
+:root{--bg:#0e1116;--panel:#171b22;--panel2:#1e242e;--fg:#e6e9ef;--muted:#98a0ad;--accent:#3ddc84;--accent2:#6ee7b0;--line:#2a303c;--warn:#ffb454;--bad:#ff7b72;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+header{position:sticky;top:0;background:rgba(14,17,22,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+header a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem}
+header a:hover{color:var(--accent)}
+header .brand{color:var(--fg);font-weight:800;margin-right:auto}
+main{max-width:960px;margin:0 auto;padding:32px 24px 96px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:2rem;margin:.2em 0}
+h2{font-size:1.4rem;margin-top:2em;padding-bottom:.3em;border-bottom:1px solid var(--line)}
+h3{font-size:1.1rem;margin-top:1.6em}
+a{color:var(--accent)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:16px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:700}
+.badge.g{background:rgba(61,220,132,.15);color:var(--accent)}
+.badge.y{background:rgba(255,180,84,.15);color:var(--warn)}
+.badge.r{background:rgba(255,123,114,.15);color:var(--bad)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+.tag{color:var(--accent);font-weight:700}
+.callout{border-left:3px solid var(--accent);background:var(--panel2);padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0}
+.warn{border-left-color:var(--warn)}
+code{background:var(--panel2);padding:2px 6px;border-radius:6px;font-size:.9em}
+ul,ol{padding-left:1.4em}
+li{margin:.35em 0}
+.hero{background:linear-gradient(135deg,#141a24,#0e1116 60%);border:1px solid var(--line);border-radius:16px;padding:32px;margin:8px 0 24px}
+.hero h1{margin:0 0 8px}
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">TV Debloated Store</span>
+  <a href="index.html">Inicio</a>
+  <a href="01-market-and-trend.html">Mercado</a>
+  <a href="02-implementation.html">Implementación</a>
+  <a href="03-distribution-and-monetization.html">Distribución & Monetización</a>
+  <a href="04-roadmap.html">Roadmap</a>
+</header>
+<main>
+  <div class="hero">
+    <h1>TV Debloated Store</h1>
+    <p class="muted">Investigación y plan de desarrollo para una app/tienda de "homescreens debloat" para TVs Android, nacida del trend de usar agentes de IA (Claude Code) para limpiar televisores.</p>
+    <p><span class="badge g">Recomendación: viable</span> <span class="badge y">MVP 8–12 semanas</span> <span class="badge g">Monetización ética</span></p>
+  </div>
+
+  <h2>Resumen ejecutivo</h2>
+  <p>Existe una demanda real y creciente por <strong>televisores más simples, rápidos y sin bloatware</strong>. El trend de redes sociales ("debloat your TV con Claude Code") demostró que la gente <em>quiere</em> el resultado, pero el proceso actual (ADB, scripts, config manual) es <strong>demasiado técnico</strong> para la mayoría.</p>
+  <p><strong>TV Debloated Store</strong> cierra esa brecha: una app instalable en TVs Android que funciona como <strong>launcher ligero + tienda de "homescreens"/temas</strong> creados y vendidos por la comunidad, con un asistente de debloat guiado opcional.</p>
+
+  <div class="grid">
+    <div class="card"><h3 style="margin-top:0">Producto</h3><p>Launcher de TV minimalista con un motor de temas declarativos (JSON + assets) y una tienda para instalar/comprar/vender configuraciones de homescreen.</p></div>
+    <div class="card"><h3 style="margin-top:0">Mercado</h3><p>Android TV, Google TV, Fire TV, Chromecast, Nvidia Shield, ONN y TVs de Hisense/TCL/Xiaomi. El público ya existe en r/AndroidTV, XDA y Discord.</p></div>
+    <div class="card"><h3 style="margin-top:0">Modelo</h3><p>Núcleo gratis, temas de pago con revenue share para creadores (70/30), "paga lo que quieras", sin anuncios y formatos abiertos (sin lock-in).</p></div>
+    <div class="card"><h3 style="margin-top:0">Ventaja</h3><p>No existe un marketplace dedicado de themes para launchers de TV. Los competidores son launchers aislados o herramientas de debloat, no una tienda.</p></div>
+  </div>
+
+  <h2>Una frase</h2>
+  <div class="callout"><strong>"Una tienda de pantallas de inicio limpias para tu TV, donde los creadores venden y los usuarios instalan en un clic."</strong></div>
+
+  <h2>Cómo leer este reporte</h2>
+  <ul>
+    <li><a href="01-market-and-trend.html">01 · Mercado y trend</a> — contexto, público, competencia y la oportunidad.</li>
+    <li><a href="02-implementation.html">02 · Implementación</a> — arquitectura técnica, formato de temas, seguridad y elecciones.</li>
+    <li><a href="03-distribution-and-monetization.html">03 · Distribución y monetización</a> — canales de distribución y monetización ética.</li>
+    <li><a href="04-roadmap.html">04 · Roadmap</a> — plan de desarrollo por fases con hitos.</li>
+  </ul>
+
+  <div class="callout warn"><strong>Nota metodológica:</strong> este entorno no dispuso de acceso a internet durante la redacción, por lo que los datos de mercado se basan en conocimiento previo de la industria (a 2024–2026) y deben <strong>verificarse</strong> contra fuentes actuales antes de invertir. Incluí una lista de verificación al final de cada sección.</div>
+</main>
+</body>
+</html>

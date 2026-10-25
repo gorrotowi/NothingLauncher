@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TV Debloated Store — 01 · Mercado y trend</title>
+<style>
+:root{--bg:#0e1116;--panel:#171b22;--panel2:#1e242e;--fg:#e6e9ef;--muted:#98a0ad;--accent:#3ddc84;--accent2:#6ee7b0;--line:#2a303c;--warn:#ffb454;--bad:#ff7b72;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+header{position:sticky;top:0;background:rgba(14,17,22,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+header a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem}
+header a:hover{color:var(--accent)}
+header .brand{color:var(--fg);font-weight:800;margin-right:auto}
+main{max-width:960px;margin:0 auto;padding:32px 24px 96px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:2rem;margin:.2em 0}
+h2{font-size:1.4rem;margin-top:2em;padding-bottom:.3em;border-bottom:1px solid var(--line)}
+h3{font-size:1.1rem;margin-top:1.6em}
+a{color:var(--accent)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:16px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:700}
+.badge.g{background:rgba(61,220,132,.15);color:var(--accent)}
+.badge.y{background:rgba(255,180,84,.15);color:var(--warn)}
+.badge.r{background:rgba(255,123,114,.15);color:var(--bad)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+.callout{border-left:3px solid var(--accent);background:var(--panel2);padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0}
+.warn{border-left-color:var(--warn)}
+code{background:var(--panel2);padding:2px 6px;border-radius:6px;font-size:.9em}
+ul,ol{padding-left:1.4em}
+li{margin:.35em 0}
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">TV Debloated Store</span>
+  <a href="index.html">Inicio</a>
+  <a href="01-market-and-trend.html">Mercado</a>
+  <a href="02-implementation.html">Implementación</a>
+  <a href="03-distribution-and-monetization.html">Distribución & Monetización</a>
+  <a href="04-roadmap.html">Roadmap</a>
+</header>
+<main>
+  <h1>01 · Mercado y trend</h1>
+
+  <h2>El trend: "debloat your TV con IA"</h2>
+  <p>En TikTok, X, YouTube y Reddit se viralizaron videos de personas usando agentes de programación (principalmente <strong>Claude Code</strong>) para "debloat" sus TVs: deshabilitar apps preinstaladas, quitar publicidad del launcher, instalar un launcher limpio y configurar una pantalla de inicio minimalista.</p>
+  <p>El contenido atrae porque el resultado es visualmente impactante (antes/después) y porque toca un dolor universal: <strong>los TVs modernos están llenos de anuncios, apps basura y UI lenta</strong>.</p>
+  <div class="callout"><strong>Señal clave:</strong> la gente celebra el <em>resultado</em> (un TV limpio y rápido), no el proceso técnico. Eso deja un hueco enorme para un producto que entregue el resultado <strong>sin ADB, sin scripts y sin saber qué es un paquete</strong>.</div>
+
+  <h2>Dolor que resuelve</h2>
+  <table>
+    <tr><th>Problema</th><th>Evidencia</th><th>Frecuencia</th></tr>
+    <tr><td>Launcher lleno de anuncios y recomendaciones</td><td>Google TV / Fire TV muestran ads en la home</td><td><span class="badge r">Muy alta</span></td></tr>
+    <tr><td>Bloatware preinstalado imposible de quitar</td><td>Apps de operadora y partners ocupan almacenamiento</td><td><span class="badge r">Muy alta</span></td></tr>
+    <tr><td>UI lenta en hardware barato</td><td>Hisense/TCL/Xiaomi con 1–2 GB de RAM</td><td><span class="badge y">Alta</span></td></tr>
+    <tr><td>Proceso de debloat demasiado técnico</td><td>Requiere ADB, PC, listas de paquetes</td><td><span class="badge r">Muy alta</span></td></tr>
+  </table>
+
+  <h2>Audiencia objetivo</h2>
+  <ul>
+    <li><strong>Early adopters técnicos</strong> — ya usan Projectivy/Flauncher, XDA, r/AndroidTV, Discord.</li>
+    <li><strong>Curiosos del trend</strong> — vieron el video viral, quieren el resultado sin esfuerzo.</li>
+    <li><strong>Creadores de temas</strong> — diseñadores/entusiastas que quieren vender sus configs.</li>
+    <li><strong>Usuarios de hardware barato</strong> — quieren exprimir un TV lento sin comprar uno nuevo.</li>
+  </ul>
+
+  <h2>Plataformas compatibles</h2>
+  <table>
+    <tr><th>Plataforma</th><th>Viabilidad</th><th>Notas</th></tr>
+    <tr><td>Android TV / Google TV</td><td><span class="badge g">Alta</span></td><td>Objetivo principal. Launchers de terceros posibles.</td></tr>
+    <tr><td>Fire TV (fork de Android)</td><td><span class="badge y">Media</span></td><td>Permite sideload y launchers, pero Amazon bloquea por defecto.</td></tr>
+    <tr><td>Nvidia Shield / ONN / Mi Box</td><td><span class="badge g">Alta</span></td><td>Hardware popular entre entusiastas.</td></tr>
+    <tr><td>Roku</td><td><span class="badge r">Baja</span></td><td>Plataforma cerrada, no Android. Fuera de alcance MVP.</td></tr>
+    <tr><td>Tizen / webOS</td><td><span class="badge r">Baja</span></td><td>Cerradas. Solo apps web limitadas.</td></tr>
+  </table>
+
+  <h2>Competencia (no hay tienda de themes)</h2>
+  <table>
+    <tr><th>Competidor</th><th>Qué es</th><th>Vende themes?</th><th>Brecha que deja</th></tr>
+    <tr><td>Projectivy Launcher</td><td>Launcher de TV potente y de pago</td><td>No (solo el launcher)</td><td>Sin marketplace de configs</td></tr>
+    <tr><td>FLauncher</td><td>Launcher open source minimalista</td><td>No</td><td>Sin curaduría ni monetización</td></tr>
+    <tr><td>Wolf Launcher / ATV Launcher</td><td>Launchers ligeros</td><td>No</td><td>Sin comunidad de temas</td></tr>
+    <tr><td>ADB TV / UAD (Universal Android Debloater)</td><td>Herramientas de debloat</td><td>No</td><td>Técnicas, no un "store"</td></tr>
+  </table>
+  <div class="callout"><strong>Oportunidad:</strong> nadie combina <em>launcher + tienda + debloat guiado</em> en un solo producto de consumo. El hueco es real.</div>
+
+  <h2>Verificación recomendada (sin internet en este entorno)</h2>
+  <ul class="small">
+    <li>Buscar volumen de "TV debloat", "Claude Code TV", "best TV launcher" en Google Trends y TikTok.</li>
+    <li>Leer hilos de r/AndroidTV y r/FireTV sobre launchers y debloat (frecuencia de quejas).</li>
+    <li>Revisar descargas/precio de Projectivy en Play Store como proxy de disposición a pagar.</li>
+    <li>Entrevistar 10–15 miembros de comunidades de debloat para validar el "quiero el resultado sin ADB".</li>
+  </ul>
+</main>
+</body>
+</html>

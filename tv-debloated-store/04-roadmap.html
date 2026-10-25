@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TV Debloated Store — 04 · Roadmap</title>
+<style>
+:root{--bg:#0e1116;--panel:#171b22;--panel2:#1e242e;--fg:#e6e9ef;--muted:#98a0ad;--accent:#3ddc84;--accent2:#6ee7b0;--line:#2a303c;--warn:#ffb454;--bad:#ff7b72;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+header{position:sticky;top:0;background:rgba(14,17,22,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+header a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem}
+header a:hover{color:var(--accent)}
+header .brand{color:var(--fg);font-weight:800;margin-right:auto}
+main{max-width:960px;margin:0 auto;padding:32px 24px 96px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:2rem;margin:.2em 0}
+h2{font-size:1.4rem;margin-top:2em;padding-bottom:.3em;border-bottom:1px solid var(--line)}
+h3{font-size:1.1rem;margin-top:1.6em}
+a{color:var(--accent)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:16px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:700}
+.badge.g{background:rgba(61,220,132,.15);color:var(--accent)}
+.badge.y{background:rgba(255,180,84,.15);color:var(--warn)}
+.badge.r{background:rgba(255,123,114,.15);color:var(--bad)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+.callout{border-left:3px solid var(--accent);background:var(--panel2);padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0}
+.warn{border-left-color:var(--warn)}
+code{background:var(--panel2);padding:2px 6px;border-radius:6px;font-size:.9em}
+ul,ol{padding-left:1.4em}
+li{margin:.35em 0}
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">TV Debloated Store</span>
+  <a href="index.html">Inicio</a>
+  <a href="01-market-and-trend.html">Mercado</a>
+  <a href="02-implementation.html">Implementación</a>
+  <a href="03-distribution-and-monetization.html">Distribución & Monetización</a>
+  <a href="04-roadmap.html">Roadmap</a>
+</header>
+<main>
+  <h1>04 · Roadmap</h1>
+  <p>Plan de desarrollo por fases. Estimaciones para un equipo de 1–2 personas. El detalle ejecutable está en <a href="development-plan.md">development-plan.md</a>.</p>
+
+  <h2>Fase 0 — Validación (2–3 semanas)</h2>
+  <div class="card">
+    <ul>
+      <li>Entrevistar 10–15 usuarios de comunidades de debloat (r/AndroidTV, XDA, Discord).</li>
+      <li>Validar el "quiero el resultado sin ADB" y la disposición a pagar por temas.</li>
+      <li>Definir el formato <code>.tvtheme</code> probando con 3 themes reales.</li>
+      <li><strong>Salida:</strong> decisión go/no-go + especificación del MVP.</li>
+    </ul>
+  </div>
+
+  <h2>Fase 1 — MVP (8–12 semanas)</h2>
+  <div class="card">
+    <ul>
+      <li>Launcher ligero con motor de temas (Compose for TV).</li>
+      <li>Instalar temas locales (importar <code>.tvtheme</code>).</li>
+      <li>Tienda básica de solo lectura: navegar e instalar temas gratuitos.</li>
+      <li>Distribución: GitHub Releases + código de Downloader + OTA básica.</li>
+      <li><strong>Salida:</strong> APK público usable en Shield/Chromecast/Fire TV.</li>
+    </ul>
+  </div>
+
+  <h2>Fase 2 — Marketplace (6–10 semanas)</h2>
+  <div class="card">
+    <ul>
+      <li>Cuentas, subida de temas por creadores, moderación.</li>
+      <li>Pagos: "paga lo que quieras" + revenue share 70/30.</li>
+      <li>Pro de una sola vez (backup/sync).</li>
+      <li><strong>Salida:</strong> marketplace funcional con creadores beta.</li>
+    </ul>
+  </div>
+
+  <h2>Fase 3 — Debloat asistido (4–6 semanas)</h2>
+  <div class="card">
+    <ul>
+      <li>Módulo ADB por red con listas seguras y confirmación.</li>
+      <li>Modo "lista segura" solo (nunca tocar servicios críticos sin aviso).</li>
+      <li>Distribuido <strong>solo</strong> por sideload (no en Play).</li>
+    </ul>
+  </div>
+
+  <h2>Fase 4 — Crecimiento (continuo)</h2>
+  <div class="card">
+    <ul>
+      <li>F-Droid (si FOSS) y evaluación de Google Play TV para la tienda.</li>
+      <li>Herramientas de creadores, plantillas, preview en vivo.</li>
+      <li>Localización (ES/EN/PT), multi-dispositivo, sync en nube.</li>
+    </ul>
+  </div>
+
+  <h2>Hitos clave</h2>
+  <table>
+    <tr><th>Hito</th><th>Cuándo</th><th>Éxito =</th></tr>
+    <tr><td>MVP instalable</td><td>Semana 10–12</td><td>20 usuarios instalan un tema sin ayuda</td></tr>
+    <tr><td>Primer pago</td><td>Fase 2</td><td>1 creador vende un tema real</td></tr>
+    <tr><td>Debloat viral</td><td>Fase 3</td><td>Video de antes/después generado por la app</td></tr>
+  </table>
+
+  <h2>Métricas que importan</h2>
+  <ul>
+    <li>Instalaciones activas y retención a 7/30 días.</li>
+    <li>Temas instalados por usuario.</li>
+    <li>% de usuarios que paga (conversión a tema de pago o Pro).</li>
+    <li>NPS de la comunidad de creadores.</li>
+  </ul>
+</main>
+</body>
+</html>
