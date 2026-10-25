@@ -1,0 +1,27 @@
+Nothing Launcher is exactly what it sounds like: nothing.
+
+A home screen that gets out of your way. One word in the middle of your screen — "Nothing" — and that's it. Tap it to see your apps. Long-press an app to uninstall it. Done.
+
+Designed for people who are tired of clutter, notifications and infinite grids. Nothing Launcher strips your home screen down to its purest form so you can actually use your phone instead of scrolling through it.
+
+WHY NOTHING
+• Minimal by design — a single, centered word is your whole home screen.
+• Automatic Day/Night — black on white during the day, white on black at night.
+• Lightning fast — no widgets, no feeds, no tracking. Just launch and go.
+• Respects your attention — no ads, no notifications, no nonsense.
+• Tiny footprint — works on Android 5.0 and up, even on old or slow devices.
+• Open source — GPL-3.0. Audit it, fork it, make it yours.
+
+HOW IT WORKS
+1. Unlock your phone. See "Nothing".
+2. Tap it to open your full app list.
+3. Tap an app to launch it. Long-press to uninstall it.
+
+That's the entire feature set, on purpose.
+
+PRIVACY
+Nothing Launcher collects nothing. No analytics, no crash reporters, no extra permissions beyond what Android needs to let you uninstall apps. Your data stays on your device.
+
+If you've ever thought "I wish my phone were quieter," this is the launcher for you.
+
+Nothing Launcher — for Nothing lovers.

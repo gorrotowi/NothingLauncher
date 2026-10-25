@@ -1,0 +1,27 @@
+Nothing Launcher es exactamente lo que dice: nada.
+
+Una pantalla de inicio que no estorba. Una palabra en el centro de tu pantalla — "Nothing" — y eso es todo. Tócala para ver tus apps. Mantén pulsada una app para desinstalarla. Listo.
+
+Diseñada para quienes están cansados del desorden, las notificaciones y las cuadrículas infinitas. Nothing Launcher reduce tu pantalla de inicio a su forma más pura para que de verdad uses tu teléfono en lugar de pasar el tiempo desplazándote por él.
+
+POR QUÉ NOTHING
+• Minimalista por diseño: una sola palabra centrada es toda tu pantalla de inicio.
+• Día/Noche automático: negro sobre blanco de día, blanco sobre negro de noche.
+• Rápida como un rayo: sin widgets, sin feeds, sin rastreo. Solo abre y listo.
+• Respeta tu atención: sin anuncios, sin notificaciones, sin tonterías.
+• Huella mínima: funciona desde Android 5.0, incluso en equipos viejos o lentos.
+• Código abierto: GPL-3.0. Audítala, hazle fork, hazla tuya.
+
+CÓMO FUNCIONA
+1. Desbloquea tu teléfono. Verás "Nothing".
+2. Tócala para abrir la lista completa de apps.
+3. Toca una app para abrirla. Mantén pulsada para desinstalarla.
+
+Ese es todo el conjunto de funciones, a propósito.
+
+PRIVACIDAD
+Nothing Launcher no recopila nada. Sin analíticas, sin reportes de fallos, sin permisos extra más allá de lo que Android necesita para desinstalar apps. Tus datos se quedan en tu dispositivo.
+
+Si alguna vez pensaste "ojalá mi teléfono fuera más silencioso", este launcher es para ti.
+
+Nothing Launcher — para amantes de Nothing.

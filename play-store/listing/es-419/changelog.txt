@@ -1,0 +1,5 @@
+1.0.0
+Versión inicial.
+• Pantalla de inicio minimalista con el botón "Nothing".
+• Lista completa de apps con apertura y desinstalación con pulsación larga.
+• Tema claro/oscuro automático.

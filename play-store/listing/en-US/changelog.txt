@@ -1,0 +1,5 @@
+1.0.0
+Initial release.
+• Minimal home screen with the "Nothing" button.
+• Full app list with launch and long-press uninstall.
+• Automatic light/dark theme.
