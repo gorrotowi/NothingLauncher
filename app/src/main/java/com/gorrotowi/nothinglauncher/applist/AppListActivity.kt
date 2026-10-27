@@ -3,7 +3,6 @@ package com.gorrotowi.nothinglauncher.applist
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import com.gorrotowi.nothinglauncher.NothingBaseActivity
 import com.gorrotowi.nothinglauncher.databinding.ActivityAppListBinding
 
@@ -20,8 +19,6 @@ class AppListActivity : NothingBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         setUpViews()
         setUpListeners()
