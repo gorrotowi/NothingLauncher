@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:background">@color/colorBackground</item>
-        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>

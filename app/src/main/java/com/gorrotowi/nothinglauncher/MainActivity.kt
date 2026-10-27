@@ -16,7 +16,6 @@ class MainActivity : NothingBaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setNightMode()
-        overrideNotch()
         setUpListeners()
     }
 
